@@ -5,18 +5,19 @@ def zerando_tabuleiro():
     #Limpa o tabuleiro para um novo jogo
     
     global tabuleiro
+    tabuleiro.clear()
     
-    for linha in range(3):
-        for coluna in range(3):
-            tabuleiro[linha][coluna] = "-"
+    for linhas in range(3):
+        linha = []
+        for colunas in range(3):
+            linha.append("-")
+        tabuleiro.append(linhas)
+
             
 def menu():
     #Exibe as opções do programa
     
-    print("-" * 40)
-    print(" " * 13,"JOGO DA VELHA")
-    print("-" * 40)
-    print()
+    titulo("jogo da velha")
     print("Opções:")
     print("  1 - Novo jogo")
     print("  2 - Placar")
@@ -40,17 +41,26 @@ def definindo_escolha():
     return escolha
 
 def nomes():
+    #Faz a leitura dos nomes dos jogadores
     jogador1 = input("Insira o nome do primeiro jogador: ")
     jogador2 = input("Insira o nome do segundo jogador: ")
     return [jogador1, jogador2]
 
-def novojogo():
-    zerando_tabuleiro()
-    print("-" * 40)
-    print(" " * 15,"NOVO JOGO")
-    print("-" * 40)
+def titulo(sessao):
+    #Faz um padrão de título
+    tamanho = len(sessao)
+    qtd_tracos = 50
+    qtd_espacos = (qtd_tracos - tamanho) // 2
+    sessao = sessao.upper()
+    
+    print("-" * qtd_tracos)
+    print(" " * qtd_espacos, sessao)
+    print("-" * qtd_tracos)
     print()
-
+    
+def novo_jogo():
+    zerando_tabuleiro()
+    titulo("novo jogo")
 
     
     
