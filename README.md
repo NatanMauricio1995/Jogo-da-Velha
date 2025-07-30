@@ -165,11 +165,10 @@ Contribuições são bem-vindas! Para contribuir:
 
 ## Contato
 
-**[Seu Nome]**
-- Email: seu.email@exemplo.com
-- LinkedIn: [linkedin.com/in/seu-perfil](https://linkedin.com/in/seu-perfil)
-- GitHub: [github.com/seu-usuario](https://github.com/seu-usuario)
-
+**Natan Mairicio Santos**
+- 📧 Email: natanmauriciosantos@hotmail.com
+- 💼 LinkedIn: [linkedin.com/in/natan-mauricio-santos](https://linkedin.com/in/natan-mauricio-santos)
+- 🐙 GitHub: [github.com/NatanMauricio1995](https://github.com/NatanMauricio1995)
 ---
 
 Se este projeto te ajudou, deixe uma estrela!
