@@ -1,12 +1,10 @@
 tabuleiro = []
-
 jogadores = {}
+placares = {"jogador1": 0, "jogador2": 0, "empate": 0}
 
 def zerando_tabuleiro():
-    # Limpa o tabuleiro para um novo jogo
     global tabuleiro
     tabuleiro.clear()
-    
     for linhas in range(3):
         linha = []
         for colunas in range(3):
@@ -14,7 +12,6 @@ def zerando_tabuleiro():
         tabuleiro.append(linha)
 
 def menu():
-    # Exibe as opções do programa
     titulo("jogo da velha")
     print("Opções:")
     print("  1 - Novo jogo")
@@ -22,12 +19,11 @@ def menu():
     print("  3 - Sair")
 
 def definindo_escolha():
-    # Faz leitura da escolha do usuário no menu principal
     escolha = 0
     while (escolha < 1) or (escolha > 3):
         try:
             escolha = int(input("Insira a opção desejada: "))
-            if((escolha < 1) or (escolha > 3)):
+            if ((escolha < 1) or (escolha > 3)):
                 print("Insira um valor numérico válido!\n")
         except ValueError:
             print("Insira um valor numérico válido!\n")
@@ -37,149 +33,154 @@ def definindo_escolha():
     return escolha
 
 def nomes():
-    # Faz a leitura dos nomes dos jogadores
     global jogadores
-    
     nome1 = input("Insira o nome do primeiro jogador: ")
     nome2 = input("Insira o nome do segundo jogador: ")
-    
     peca1, peca2 = escolha_marcador(nome1)
-    
     jogadores = {
-        "jogador1": {
-            "nome": nome1,
-            "peca": peca1
-        },
-        "jogador2": {
-            "nome": nome2,
-            "peca": peca2
-        }
+        "jogador1": {"nome": nome1, "peca": peca1},
+        "jogador2": {"nome": nome2, "peca": peca2}
     }
 
 def titulo(sessao):
-    # Faz um padrão de título
     tamanho = len(sessao)
     qtd_tracos = 50
     qtd_espacos = (qtd_tracos - tamanho) // 2
     sessao = sessao.upper()
-    
     print("-" * qtd_tracos)
     print(" " * qtd_espacos + sessao)
     print("-" * qtd_tracos)
     print()
 
 def escolha_marcador(jogador1):
-    # O jogador 1 escolhe qual peça irá usar
     print(f"{jogador1}, escolha seu marcador:")
     print("  1 - ❌")
     print("  2 - ⭕")
-    
     escolha = 0
     while (escolha < 1) or (escolha > 2):
         try:
             escolha = int(input("Insira a opção desejada: "))
-            if((escolha < 1) or (escolha > 2)):
+            if ((escolha < 1) or (escolha > 2)):
                 print("Insira um valor numérico válido!\n")
         except ValueError:
             print("Insira um valor numérico válido!\n")
-    
     if escolha == 1:
-        peca1 = "❌"
-        peca2 = "⭕"
+        return "❌", "⭕"
     else:
-        peca1 = "⭕"
-        peca2 = "❌"
-        
-    return peca1, peca2
+        return "⭕", "❌"
+
+def mostrar_tabuleiro():
+    print("\n  0   1   2")
+    for i in range(3):
+        linha = " | ".join(tabuleiro[i])
+        print(f"{i} {linha}")
+        if i < 2:
+            print("  ---------")
+    print()
 
 def novo_jogo():
     zerando_tabuleiro()
     titulo("novo jogo")
     nomes()
+    mostrar_tabuleiro()
     jogo()
 
 def placar():
-    # Função placeholder para evitar erro
-    print("Placar ainda não implementado.\n")
+    print()
+    titulo("placar")
+    print(f'{jogadores.get("jogador1", {}).get("nome", "Jogador 1")}: {placares["jogador1"]} vitória(s)')
+    print(f'{jogadores.get("jogador2", {}).get("nome", "Jogador 2")}: {placares["jogador2"]} vitória(s)')
+    print(f'Empates: {placares["empate"]}\n')
 
-def main():
-    escolha = 0
-    while (escolha != 3):
-        menu()
-        escolha = definindo_escolha()
-        
-        if(escolha == 1):
-            novo_jogo()
-        elif(escolha == 2):
-            placar()
-        elif(escolha == 3):
-            print("Muito Obrigado por jogar! Até mais!")
-            
 def teste_linha(tabuleiro):
-    #Verifica se o jogo terminou e qual peça ganhadora em linha
     for linha in range(3):         
-        if((tabuleiro[linha][0] == "❌") and (tabuleiro[linha][1] == "❌") and (tabuleiro[linha][2] == "❌")):
-            status = "❌"
-            
-        elif((tabuleiro[linha][0] == "⭕") and (tabuleiro[linha][1] == "⭕") and (tabuleiro[linha][2] == "⭕")):
-            status = "⭕"
-            
-        else:
-            status = 0
-            
-    return status
+        if tabuleiro[linha][0] == tabuleiro[linha][1] == tabuleiro[linha][2] != "-":
+            return tabuleiro[linha][0]
+    return 0
 
 def teste_coluna(tabuleiro):
-    #Verifica se o jogo terminou e qual peça ganhadora em coluna
     for coluna in range(3):
-        if((tabuleiro[0][coluna] == "❌") and (tabuleiro[1][coluna] == "❌") and (tabuleiro[2][coluna] == "❌")):
-            status = "❌"
-            
-        elif((tabuleiro[0][coluna] == "⭕") and (tabuleiro[1][coluna] == "⭕") and (tabuleiro[2][coluna] == "⭕")):
-            status = "⭕"
-            
-        else:
-            status = 0
-            
-    return status
-                
-def teste_diagonal_principal(tabuleiro):
-    #Verifica se o jogo terminou e qual peça ganhadora na diagonal principal
-    if((tabuleiro[0][0] == "❌") and (tabuleiro[1][1] == "❌") and (tabuleiro[2][2] == "❌")):
-        status = "❌"
-            
-    elif((tabuleiro[0][0] == "⭕") and (tabuleiro[1][1] == "⭕") and (tabuleiro[2][2] == "⭕")):
-        status = "⭕"
-    
-    else:
-        status = 0
+        if tabuleiro[0][coluna] == tabuleiro[1][coluna] == tabuleiro[2][coluna] != "-":
+            return tabuleiro[0][coluna]
+    return 0
 
-    return status
-     
+def teste_diagonal_principal(tabuleiro):
+    if tabuleiro[0][0] == tabuleiro[1][1] == tabuleiro[2][2] != "-":
+        return tabuleiro[0][0]
+    return 0
+
 def teste_diagonal_secundária(tabuleiro):
-    #Verifica se o jogo terminou e qual peça ganhadora na diagonal secundária
-    if((tabuleiro[0][2] == "❌") and (tabuleiro[1][1] == "❌") and (tabuleiro[2][0] == "❌")):
-        status = "❌"
-            
-    elif((tabuleiro[0][2] == "⭕") and (tabuleiro[1][1] == "⭕") and (tabuleiro[2][0] == "⭕")):
-        status = "⭕"
-    
-    else:
-        status = 0
-    
-    return status
-     
-     
+    if tabuleiro[0][2] == tabuleiro[1][1] == tabuleiro[2][0] != "-":
+        return tabuleiro[0][2]
+    return 0
+
+def teste_ganhador():
+    global tabuleiro
+    for teste in [teste_coluna, teste_linha, teste_diagonal_principal, teste_diagonal_secundária]:
+        resultado = teste(tabuleiro)
+        if resultado != 0:
+            return resultado
+    if sum(linha.count("-") for linha in tabuleiro) == 0:
+        return -1
+    return 0
+
 def jogo():
     global jogadores
     global tabuleiro
-    
+    global placares
 
-    
-    
-    
-    
-    
-    
+    turno = 0
+    while True:
+        status = teste_ganhador()
+        if status == -1:
+            print("Empate! O tabuleiro está cheio.\n")
+            placares["empate"] += 1
+            break
+        elif status in ["❌", "⭕"]:
+            for j in jogadores:
+                if jogadores[j]["peca"] == status:
+                    print(f'{jogadores[j]["nome"]} venceu com {status}!\n')
+                    placares[j] += 1
+            break
+
+        jogador_atual = "jogador1" if turno % 2 == 0 else "jogador2"
+        nome = jogadores[jogador_atual]["nome"]
+        peca = jogadores[jogador_atual]["peca"]
+
+        x = y = -1
+        while (x < 0) or (x > 2):
+            try:
+                x = int(input(f"{nome}, selecione a LINHA (0-2): "))
+                if (x < 0) or (x > 2):
+                    print("Insira um valor numérico válido!\n")
+            except ValueError:
+                print("Insira um valor numérico válido!\n")
+
+        while (y < 0) or (y > 2):
+            try:
+                y = int(input(f"{nome}, selecione a COLUNA (0-2): "))
+                if (y < 0) or (y > 2):
+                    print("Insira um valor numérico válido!\n")
+            except ValueError:
+                print("Insira um valor numérico válido!\n")
+
+        if tabuleiro[x][y] == "-":
+            tabuleiro[x][y] = peca
+            mostrar_tabuleiro()
+            turno += 1
+        else:
+            print("Essa posição já está ocupada. Tente novamente.")
+
+def main():
+    escolha = 0
+    while escolha != 3:
+        menu()
+        escolha = definindo_escolha()
+        if escolha == 1:
+            novo_jogo()
+        elif escolha == 2:
+            placar()
+        elif escolha == 3:
+            print("Muito Obrigado por jogar! Até mais!")
 
 main()
