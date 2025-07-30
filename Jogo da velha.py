@@ -34,5 +34,8 @@ def definindo_escolha():
                 print("Insira um valor numérico válido!\n")
         except ValueError:
                 print("Insira um valor numérico válido!\n")
-                
+    print()
+    print("-" * 40)
+    print()        
     return escolha
+
