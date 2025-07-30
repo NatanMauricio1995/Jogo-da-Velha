@@ -1,148 +1,177 @@
-# 🎮 Jogo da Velha (Tic-Tac-Toe)
+# Jogo da Velha (Tic-Tac-Toe)
 
-Um jogo da velha completo e interativo desenvolvido em Python, com sistema de placar e interface amigável no terminal.
+![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat-square&logo=python)
+![Status](https://img.shields.io/badge/Status-Concluído-green?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 
-## 📋 Descrição
+Sistema completo de Jogo da Velha desenvolvido em Python com interface em linha de comando, oferecendo experiência interativa para dois jogadores com sistema de placar integrado.
 
-Este projeto implementa o clássico jogo da velha para dois jogadores, com um sistema completo que inclui:
-- Tabuleiro 3x3 interativo
-- Sistema de turnos alternados
-- Detecção automática de vitórias e empates
-- Placar acumulativo de partidas
-- Interface visual organizada no terminal
+## Descrição do Projeto
 
-## ✨ Funcionalidades
+Este projeto foi desenvolvido como parte dos estudos em **estruturas de dados** e **lógica de programação** em Python. O sistema implementa o clássico jogo da velha com funcionalidades avançadas de validação, controle de turnos e registro de estatísticas.
 
-- **Jogo completo**: Sistema de turnos com validação de jogadas
-- **Personalização**: Jogadores escolhem nomes e marcadores (❌ ou ⭕)
-- **Detecção inteligente**: Verifica vitórias em linhas, colunas e diagonais
-- **Placar persistente**: Mantém registro de vitórias e empates durante a sessão
-- **Interface amigável**: Tabuleiro visual com coordenadas numeradas
-- **Validação robusta**: Impede jogadas inválidas e entradas incorretas
-- **Menu interativo**: Navegação fácil entre jogos e visualização do placar
+### Problema Resolvido
+- **Cenário:** Necessidade de entretenimento digital simples para dois jogadores
+- **Solução:** Interface intuitiva com validações robustas e sistema de pontuação
+- **Resultado:** Jogo funcional com experiência de usuário otimizada
 
-## 🚀 Como executar
+## Funcionalidades
 
+- **Jogo para Dois Jogadores:** Sistema completo de turnos alternados
+- **Escolha de Marcadores:** Jogadores podem escolher entre X e O
+- **Sistema de Placar:** Registro de vitórias, derrotas e empates
+- **Validação Robusta:** Tratamento de entradas inválidas e posições ocupadas
+- **Interface Visual:** Tabuleiro organizado com coordenadas claras
+- **Detecção Automática:** Identificação de vitórias (linhas, colunas, diagonais) e empates
+- **Menu Interativo:** Navegação simples entre partidas e visualização de estatísticas
+
+## Tecnologias
+
+- **Python 3.x**
+- **Estruturas de Dados:** Matrizes (listas bidimensionais)
+- **Programação Procedural**
+- **Tratamento de Exceções**
+- **Manipulação de Strings**
+
+## Como Executar
+
+### Pré-requisitos
+- Python 3.6 ou superior instalado
+
+### Passos
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/seu-usuario/jogo-da-velha.git
-   cd jogo-da-velha
+   git clone https://github.com/seu-usuario/jogo-da-velha-python.git
+   cd jogo-da-velha-python
    ```
 
-2. **Execute o jogo:**
+2. **Execute o programa:**
    ```bash
-   python jogo_velha.py
+   python jogo_da_velha.py
    ```
 
-3. **Siga as instruções do menu:**
-   - Digite `1` para iniciar um novo jogo
-   - Digite `2` para ver o placar atual
-   - Digite `3` para sair
+3. **Interaja com o menu:**
+   - Digite `1` para iniciar novo jogo
+   - Digite `2` para ver placar atual
+   - Digite `3` para sair do programa
 
-## 🎯 Como jogar
-
-### Iniciando um novo jogo
-1. Escolha a opção "Novo jogo" no menu
-2. Digite os nomes dos dois jogadores
-3. O primeiro jogador escolhe seu marcador (❌ ou ⭕)
-4. Os jogadores alternam turnos até que alguém vença ou dê empate
-
-### Fazendo uma jogada
-1. Quando for sua vez, digite o número da **linha** (0, 1 ou 2)
-2. Digite o número da **coluna** (0, 1 ou 2)
-3. Sua peça será colocada na posição escolhida
-4. O tabuleiro será atualizado automaticamente
-
-### Condições de vitória
-- **Vitória**: Três marcadores iguais em linha, coluna ou diagonal
-- **Empate**: Tabuleiro completamente preenchido sem vencedor
-
-## 🔧 Requisitos
-
-- **Python 3.6+**
-- Nenhuma biblioteca externa necessária
-
-## 📊 Estrutura do Projeto
+## Preview do Sistema
 
 ```
-jogo-da-velha/
-│
-├── jogo_velha.py      # Código principal do jogo
-├── README.md          # Este arquivo
-└── .gitignore         # Arquivos ignorados pelo Git
+--------------------------------------------------
+                  JOGO DA VELHA
+--------------------------------------------------
+
+Opções:
+  1 - Novo jogo
+  2 - Ver placar  
+  3 - Sair
+
+    0   1   2
+  -----------
+0 | X | O | - |
+  -----------
+1 | X | X | O |
+  -----------
+2 | O | X | X |
+  -----------
+
+JOGADOR VENCEU com X!
 ```
 
-## 🎨 Interface
+## Estrutura do Código
 
-O jogo apresenta:
-- **Menu principal** com opções numeradas e título formatado
-- **Tabuleiro visual** com coordenadas para facilitar as jogadas:
-  ```
-      0   1   2
-    -----------
-  0 | - | - | - |
-    -----------
-  1 | - | ❌ | - |
-    -----------
-  2 | ⭕ | - | - |
-    -----------
-  ```
-- **Placar acumulativo** mostrando vitórias de cada jogador e empates
-- **Mensagens de feedback** com emojis para melhor experiência
+### Arquivos Principais
+- **`jogo_da_velha.py`** - Sistema completo do jogo
 
-## 🛠️ Principais recursos técnicos
+### Principais Funções
+```python
+def zerando_tabuleiro()           # Inicializa matriz 3x3
+def definir_nomes_jogadores()     # Configuração dos participantes  
+def mostrar_tabuleiro()           # Renderização visual do estado atual
+def obter_jogada()                # Captura e validação de movimentos
+def verificar_status_jogo()       # Análise de condições de vitória/empate
+def executar_jogo()               # Loop principal do jogo
+def exibir_placar()               # Visualização de estatísticas
+```
 
-Este projeto demonstra:
+## Conceitos Aplicados
 
-- **Estruturas de dados**: Uso de matrizes (listas bidimensionais) para o tabuleiro
-- **Algoritmos de verificação**: Lógica para detectar vitórias em todas as direções
-- **Validação de entrada**: Tratamento robusto de erros de input do usuário
-- **Organização de código**: Funções bem estruturadas e documentadas
-- **Controle de fluxo**: Loops e condicionais para gerenciar o estado do jogo
-- **Variáveis globais**: Uso adequado para manter estado entre funções
-- **Interface de usuário**: Sistema de menus e feedback visual
+### Estruturas de Dados
+- **Matrizes (Listas 2D):** Representação do tabuleiro como matriz 3x3
+- **Dicionários:** Armazenamento de informações dos jogadores e placar
+- **Manipulação de Índices:** Validação de coordenadas (0-2)
 
-## 🎯 Conceitos de programação demonstrados
+### Programação Procedural
+- **Modularização:** Divisão em funções específicas
+- **Separação de Responsabilidades:** Cada função tem propósito claro
+- **Controle de Fluxo:** Loops e condicionais para lógica do jogo
 
-- Matrizes e manipulação de dados bidimensionais
-- Algoritmos de busca em padrões (linhas, colunas, diagonais)
-- Validação e sanitização de entrada do usuário
-- Estruturação de código em funções especializadas
-- Gerenciamento de estado global do programa
-- Lógica de jogos e sistemas de turnos
-- Tratamento de exceções com try/except
+### Tratamento de Erros
+- **Try/Except:** Captura de entradas inválidas
+- **Validação de Range:** Verificação de limites das coordenadas
+- **Prevenção de Conflitos:** Impedimento de jogadas em posições ocupadas
 
-## 🤝 Como contribuir
+### Experiência do Usuário
+- **Interface Organizada:** Menus formatados e títulos centralizados
+- **Feedback Claro:** Mensagens informativas sobre operações
+- **Validação Amigável:** Orientações específicas para correção de erros
+
+## Evolução do Projeto
+
+| Funcionalidade | Status |
+|----------------|--------|
+| **Lógica Básica** | Implementada |
+| **Sistema de Placar** | Implementada |
+| **Validações Robustas** | Implementada |
+| **Interface Melhorada** | Implementada |
+
+### Próximas Melhorias Planejadas
+- [ ] Modo contra IA com diferentes níveis de dificuldade
+- [ ] Interface gráfica com Tkinter
+- [ ] Persistência de dados (salvar placar em arquivo)
+- [ ] Diferentes tamanhos de tabuleiro (4x4, 5x5)
+- [ ] Modo online multiplayer
+- [ ] Temas visuais personalizáveis
+
+## Aprendizados
+
+Este projeto consolidou conhecimentos em:
+- **Estruturas de dados bidimensionais**
+- **Algoritmos de verificação de padrões**
+- **Validação robusta de entrada do usuário**
+- **Design de interface de usuário em terminal**
+- **Gestão de estado global em aplicações**
+- **Organização e documentação de código**
+
+## Especificações Técnicas
+
+- **Tabuleiro:** Matriz 3x3 (9 posições)
+- **Jogadores:** Sistema para 2 players simultâneos
+- **Marcadores:** X e O (escolha do primeiro jogador)
+- **Condições de Vitória:** 3 em linha (horizontal, vertical, diagonal)
+- **Sistema de Pontuação:** Contador de vitórias e empates
+- **Compatibilidade:** Multiplataforma (Windows, Linux, macOS)
+
+## Contribuições
+
+Contribuições são bem-vindas! Para contribuir:
 
 1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
-3. Commit suas mudanças (`git commit -am 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/nova-funcionalidade`)
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
+4. Push para a branch (`git push origin feature/nova-feature`)
 5. Abra um Pull Request
 
-## 📝 Possíveis melhorias futuras
+## Contato
 
-- [ ] Modo contra computador (IA)
-- [ ] Diferentes tamanhos de tabuleiro (4x4, 5x5)
-- [ ] Interface gráfica com Tkinter
-- [ ] Salvamento de placar em arquivo
-- [ ] Sistema de ranking de jogadores
-- [ ] Modo online para dois jogadores remotos
-- [ ] Diferentes níveis de dificuldade da IA
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
-## 👨‍💻 Autor
-
-Desenvolvido como projeto educacional, demonstrando competências em:
-- Lógica de programação avançada
-- Estruturas de dados complexas
-- Desenvolvimento de jogos simples
-- Interface de linha de comando
-- Organização e documentação de código
+**[Seu Nome]**
+- Email: seu.email@exemplo.com
+- LinkedIn: [linkedin.com/in/seu-perfil](https://linkedin.com/in/seu-perfil)
+- GitHub: [github.com/seu-usuario](https://github.com/seu-usuario)
 
 ---
 
-⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
+Se este projeto te ajudou, deixe uma estrela!
+
+*Desenvolvido durante os estudos de Programação em Python*
