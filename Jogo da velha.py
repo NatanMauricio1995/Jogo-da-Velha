@@ -44,10 +44,25 @@ def definindo_escolha():
 
 def nomes():
     #Faz a leitura dos nomes dos jogadores
+    
     global jogadores
+    
     nome1 = input("Insira o nome do primeiro jogador: ")
     nome2 = input("Insira o nome do segundo jogador: ")
     
+    peca1, peca2 = escolha_marcador(nome1)
+    
+    jogadores= {
+        "jogador1": {
+            "nome" : nome1,
+            "peca" : peca1
+        },
+        
+        "jogador2": {
+            "nome" : nome2,
+            "peca" : peca2
+        }
+    }
     
     
 
