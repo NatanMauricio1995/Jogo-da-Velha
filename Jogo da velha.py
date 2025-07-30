@@ -39,3 +39,17 @@ def definindo_escolha():
     print()        
     return escolha
 
+def main():
+    escolha = 0
+    while (escolha != 3):
+        menu()
+        escolha = definindo_escolha()
+        
+        if(escolha == 1):
+            novo_jogo()
+            
+        elif(escolha == 2):
+            placar()
+        
+        elif(escolha == 3):
+            print("Muito Obrigado por jogar! Até mais!")
