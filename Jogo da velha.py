@@ -39,6 +39,22 @@ def definindo_escolha():
     print()        
     return escolha
 
+def nomes():
+    jogador1 = input("Insira o nome do primeiro jogador: ")
+    jogador2 = input("Insira o nome do segundo jogador: ")
+    return [jogador1, jogador2]
+
+def novojogo():
+    zerando_tabuleiro()
+    print("-" * 40)
+    print(" " * 15,"NOVO JOGO")
+    print("-" * 40)
+    print()
+
+
+    
+    
+
 def main():
     escolha = 0
     while (escolha != 3):
@@ -53,3 +69,5 @@ def main():
         
         elif(escolha == 3):
             print("Muito Obrigado por jogar! Até mais!")
+
+main()
