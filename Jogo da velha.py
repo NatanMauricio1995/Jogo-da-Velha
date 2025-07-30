@@ -1,5 +1,7 @@
 tabuleiro = []
 
+jogadores = {}
+
 def zerando_tabuleiro():
     
     #Limpa o tabuleiro para um novo jogo
@@ -42,9 +44,12 @@ def definindo_escolha():
 
 def nomes():
     #Faz a leitura dos nomes dos jogadores
-    jogador1 = input("Insira o nome do primeiro jogador: ")
-    jogador2 = input("Insira o nome do segundo jogador: ")
-    return [jogador1, jogador2]
+    global jogadores
+    nome1 = input("Insira o nome do primeiro jogador: ")
+    nome2 = input("Insira o nome do segundo jogador: ")
+    
+    
+    
 
 def titulo(sessao):
     #Faz um padrão de título
@@ -58,9 +63,34 @@ def titulo(sessao):
     print("-" * qtd_tracos)
     print()
     
+def escolha_marcador(jogador1):
+    # O jogador 1 escolhe qual peça que irá usar
+    print(f"{jogador1} escolha seu marcador:")
+    print("  1 - ❌")
+    print("  2 - ⭕")
+    
+    while (escolha < 1) or (escolha > 2):
+        try:
+            escolha = int(input("Insira a opção desejada: "))
+            if((escolha < 1) or (escolha > 2)):
+                print("Insira um valor numérico válido!\n")
+        except ValueError:
+                print("Insira um valor numérico válido!\n")
+        
+        if (escolha == 1):
+            peca1 = "❌"
+            peca2 = "⭕"
+        else:
+            peca1 = "⭕"
+            peca2 = "❌"
+    return peca1, peca2
+    
+    
 def novo_jogo():
     zerando_tabuleiro()
     titulo("novo jogo")
+    
+    
 
     
     
