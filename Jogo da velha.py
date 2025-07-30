@@ -12,6 +12,7 @@ def zerando_tabuleiro():
             
 def menu():
     #Exibe as opções do programa
+    
     print("-" * 40)
     print(" " * 13,"JOGO DA VELHA")
     print("-" * 40)
@@ -20,3 +21,18 @@ def menu():
     print("  1 - Novo jogo")
     print("  2 - Placar")
     print("  3 - Sair")
+    
+def definindo_escolha():
+    #Faz leitura da escolha do usuário no menu principal
+    
+    escolha = 0
+    
+    while (escolha < 1) or (escolha > 3):
+        try:
+            escolha = int(input("Insira a opção desejada: "))
+            if((escolha < 1) or (escolha > 3)):
+                print("Insira um valor numérico válido!\n")
+        except ValueError:
+                print("Insira um valor numérico válido!\n")
+                
+    return escolha
